@@ -1,0 +1,5 @@
+Credentials cache: API:C094B11F-F5B0-4667-A12A-88F2969FCCAE
+        Principal: tlemesle@42.FR
+
+  Issued                Expires               Principal
+Sep  7 12:38:19 2020  Sep 14 12:38:19 2020  krbtgt/42.FR@42.FR
