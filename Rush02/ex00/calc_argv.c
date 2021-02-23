@@ -1,33 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   calc_argv.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemesle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 16:48:26 by tlemesle          #+#    #+#             */
-/*   Updated: 2020/09/18 10:53:02 by tlemesle         ###   ########.fr       */
+/*   Created: 2020/09/26 11:54:42 by tlemesle          #+#    #+#             */
+/*   Updated: 2020/09/26 14:27:14 by tlemesle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+int		ft_strlen(char *str)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (str[i])
-	{
-		write(1, &str[i], 1);
 		i++;
-	}
-	write(1, "\n", 1);
+	return (i);
 }
 
-int		main(int argc, char **argv)
+void	ft_mod_len(int len, char *str)
 {
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	len = ft_strlen(str);
+
+	while (len >= 0)
+	{
+		if (len % 3 == 0)
+		{
+			*str = nouveau trio;
+			*str = est une centaine;
+			str++;
+		}
+		if (len % 3 == 2)
+		{
+			*str = est une dizaine;
+			str++;
+		}
+		if (len % 3 == 1)
+		{
+			*str = est une unite;
+			str++;
+		}
+		len--;
+	}
 }

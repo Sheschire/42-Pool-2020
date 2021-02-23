@@ -1,33 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   wdmatch.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemesle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 16:48:26 by tlemesle          #+#    #+#             */
-/*   Updated: 2020/09/18 10:53:02 by tlemesle         ###   ########.fr       */
+/*   Created: 2020/09/25 14:32:35 by tlemesle          #+#    #+#             */
+/*   Updated: 2020/09/25 14:50:06 by tlemesle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putstr(char *str)
+void	ft_wdmatch(char *s1, char *s2)
 {
-	int i;
+	int		i;
+	int		j;
+	int		cmpt;
 
 	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
+	j = 0;
+	cmpt = 0;
+	while (s1[i])
 		i++;
+	while (*s2)
+	{
+		if (*s2 == s1[j])
+		{
+			cmpt++;
+			j++;
+		}
+		s2++;
 	}
-	write(1, "\n", 1);
+	j = 0;
+	if (cmpt == i)
+		while (s1[j])
+			write(1, &s1[j++], 1);
 }
 
-int		main(int argc, char **argv)
+int 	main(int ac, char **av)
 {
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	if (ac == 3)
+		ft_wdmatch(av[1], av[2]);
+	write(1, "\n", 1);
 }

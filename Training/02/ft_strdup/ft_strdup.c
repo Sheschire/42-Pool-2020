@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemesle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 16:48:26 by tlemesle          #+#    #+#             */
-/*   Updated: 2020/09/18 10:53:02 by tlemesle         ###   ########.fr       */
+/*   Created: 2020/09/24 17:08:39 by tlemesle          #+#    #+#             */
+/*   Updated: 2020/09/24 17:14:04 by tlemesle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putstr(char *str)
+char	*ft_strdup(char *src)
 {
-	int i;
+	int		i;
+	char	*dup;
+	int		j;
 
 	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
+	j = 0;
+	while (src[i])
 		i++;
+	if (!(dup) = (char *)malloc(sizeof(*dup) * (i + 1)))
+		return (0);
+	while (src[j])
+	{
+		dup[j] = src[j];
+		j++;
 	}
-	write(1, "\n", 1);
-}
-
-int		main(int argc, char **argv)
-{
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	dup[j] = '\0';
+	return (dup);
 }

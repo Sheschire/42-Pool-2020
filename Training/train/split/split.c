@@ -1,33 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemesle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 16:48:26 by tlemesle          #+#    #+#             */
-/*   Updated: 2020/09/18 10:53:02 by tlemesle         ###   ########.fr       */
+/*   Created: 2020/09/25 15:14:53 by tlemesle          #+#    #+#             */
+/*   Updated: 2020/09/25 15:26:17 by tlemesle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putstr(char *str)
+int		is_sep(char *str, char *charset)
 {
-	int i;
-
-	i = 0;
-	while (str[i])
+	while (*charset)
 	{
-		write(1, &str[i], 1);
-		i++;
+		if (*charset == str)
+			return (1);
+		charset++;
 	}
-	write(1, "\n", 1);
+	return (0);
 }
 
-int		main(int argc, char **argv)
+int		ft_word_count(char *str, char *charset)
 {
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	int		i;
+
+	i = 0;
+	while (*str)
+	{
+		while (*str && is_sep(str[i], charset))
+			str++;
+		while (*str && !is_sep(str[i], charset))
+			i++;
+		nb_word++;
+	}
+}
+
+char 	**ft_split(char *str, char *charset)
+{
+	int		nb_word;
 }

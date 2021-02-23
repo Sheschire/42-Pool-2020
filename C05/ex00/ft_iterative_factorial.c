@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemesle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 16:48:26 by tlemesle          #+#    #+#             */
-/*   Updated: 2020/09/18 10:53:02 by tlemesle         ###   ########.fr       */
+/*   Created: 2020/09/14 09:41:07 by tlemesle          #+#    #+#             */
+/*   Updated: 2020/09/16 18:55:24 by tlemesle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+int	ft_iterative_factorial(int nb)
 {
-	int i;
+	int		res;
 
-	i = 0;
-	while (str[i])
+	res = nb;
+	if (nb == 0 || nb == 1)
+		return (1);
+	if (nb < 0)
+		return (0);
+	while (nb > 1)
 	{
-		write(1, &str[i], 1);
-		i++;
+		res *= (nb - 1);
+		nb--;
 	}
-	write(1, "\n", 1);
-}
-
-int		main(int argc, char **argv)
-{
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	return (res);
 }

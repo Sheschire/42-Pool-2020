@@ -1,33 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   repeat_alpha.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemesle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 16:48:26 by tlemesle          #+#    #+#             */
-/*   Updated: 2020/09/18 10:53:02 by tlemesle         ###   ########.fr       */
+/*   Created: 2020/09/24 12:28:32 by tlemesle          #+#    #+#             */
+/*   Updated: 2020/09/24 13:41:54 by tlemesle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putstr(char *str)
+int		ft_calcul(char c)
 {
-	int i;
+	int		i;
 
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	write(1, "\n", 1);
+	i = 1;
+	if (c >= 'A' && c <= 'Z')
+		i = c - 63;
+	if (c >= 'a' && c <= 'z')
+		i = c - 95;
+	return (i);
 }
 
 int		main(int argc, char **argv)
 {
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	int i;
+
+	if (argc == 2)
+	{
+		while (*argv[1])
+		{
+			i = ft_calcul(*argv[1]);
+			while (i)
+			{
+				write(1, argv[1], 1);
+				i--;
+			}
+			
+			argv[1]++;
+		}
+	}
+	write(1, "\n", 1);
 }

@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemesle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 16:48:26 by tlemesle          #+#    #+#             */
-/*   Updated: 2020/09/18 10:53:02 by tlemesle         ###   ########.fr       */
+/*   Created: 2020/09/24 15:21:45 by tlemesle          #+#    #+#             */
+/*   Updated: 2020/09/24 17:08:04 by tlemesle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+int		ft_atoi(const char *str)
 {
-	int i;
+	int		nb;
+	int 	minus;
 
-	i = 0;
-	while (str[i])
+	nb = 0;
+	minus = 1;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		write(1, &str[i], 1);
-		i++;
+		if (*str == '-')
+			minus = -1;
+		str++;
 	}
-	write(1, "\n", 1);
-}
-
-int		main(int argc, char **argv)
-{
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	while ((*str >= '0' && *str <= '9') && *str)
+	{
+		nb = nb * 10 + *str - '0';
+		str++;
+	}
+	return (nb * minus);
 }

@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   str_capitalizer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemesle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 16:48:26 by tlemesle          #+#    #+#             */
-/*   Updated: 2020/09/18 10:53:02 by tlemesle         ###   ########.fr       */
+/*   Created: 2020/09/25 11:21:20 by tlemesle          #+#    #+#             */
+/*   Updated: 2020/09/25 11:46:13 by tlemesle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
-void	ft_putstr(char *str)
+#include <stdio.h>
+int main(int ac, char **av)
 {
-	int i;
-
-	i = 0;
-	while (str[i])
+	int i =0;
+	while (av[1][i])
 	{
-		write(1, &str[i], 1);
+		if (av[1][i] >= 'A' && av[1][i] <= 'Z')
+			av[1][i] += 32;
 		i++;
 	}
-	write(1, "\n", 1);
-}
-
-int		main(int argc, char **argv)
-{
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	printf("%s", av[1]);
 }

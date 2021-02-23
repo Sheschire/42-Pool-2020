@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   max.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemesle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 16:48:26 by tlemesle          #+#    #+#             */
-/*   Updated: 2020/09/18 10:53:02 by tlemesle         ###   ########.fr       */
+/*   Created: 2020/09/24 20:03:11 by tlemesle          #+#    #+#             */
+/*   Updated: 2020/09/24 20:15:12 by tlemesle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-void	ft_putstr(char *str)
+int		max(int *tab, unsigned int len)
 {
-	int i;
+	int	max;
 
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	write(1, "\n", 1);
+	if (!len)
+		return (0);
+	max = tab[--len];
+	while (len--)
+		if (tab[len] > max)
+			max = tab[len];
+	return (max);
 }
 
-int		main(int argc, char **argv)
+int		main(void)
 {
-	(void)argc;
-	ft_putstr(argv[0]);
+	int	*tab;
+
+	if (!(tab = (int*)malloc(sizeof(int) * 3)))
+		return (0);
+	tab[0] = 7;
+	tab[1] = 6;
+	tab[2] = 4;
+	printf("%d", max(tab, 3));
 	return (0);
 }

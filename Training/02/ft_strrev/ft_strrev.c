@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemesle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 16:48:26 by tlemesle          #+#    #+#             */
-/*   Updated: 2020/09/18 10:53:02 by tlemesle         ###   ########.fr       */
+/*   Created: 2020/09/25 09:50:22 by tlemesle          #+#    #+#             */
+/*   Updated: 2020/09/25 09:57:06 by tlemesle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+char	*ft_strrev(char *str)
 {
-	int i;
+	int		i;
+	int		j;
+	char	tmp;
 
 	i = 0;
+	j = 0;
 	while (str[i])
-	{
-		write(1, &str[i], 1);
 		i++;
+	while (i > j)
+	{
+		tmp = str[i - 1];
+		str[i - 1] = str[j];
+		str[j] = tmp;
+		i--;
+		j++;
 	}
-	write(1, "\n", 1);
+	return (str);
 }
 
-int		main(int argc, char **argv)
+#include <stdio.h>
+
+int main (int ac, char **av)
 {
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	printf("%s\n", ft_strrev(av[1]));
 }

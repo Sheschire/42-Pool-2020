@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   search_and_replace.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemesle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 16:48:26 by tlemesle          #+#    #+#             */
-/*   Updated: 2020/09/18 10:53:02 by tlemesle         ###   ########.fr       */
+/*   Created: 2020/09/30 18:13:07 by tlemesle          #+#    #+#             */
+/*   Updated: 2020/10/01 11:11:41 by tlemesle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+ #include <unistd.h>
+int		main(int ac, char **av)
 {
-	int i;
-
-	i = 0;
-	while (str[i])
+	if (ac == 4)
 	{
-		write(1, &str[i], 1);
-		i++;
+		while (*av[1])
+		{
+			if (*av[1] == *av[2])
+				*av[1] = *av[3];
+			write(1, av[1], 1);
+			av[1]++;
+		}
 	}
 	write(1, "\n", 1);
-}
-
-int		main(int argc, char **argv)
-{
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
 }

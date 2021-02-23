@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   is_power_of_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemesle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 16:48:26 by tlemesle          #+#    #+#             */
-/*   Updated: 2020/09/18 10:53:02 by tlemesle         ###   ########.fr       */
+/*   Created: 2020/09/25 10:20:34 by tlemesle          #+#    #+#             */
+/*   Updated: 2020/09/25 10:30:24 by tlemesle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+int		is_power_of_2(unsigned int n)
 {
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	write(1, "\n", 1);
+	if (n == 0)
+		return (0);
+	while (n % 2 == 0)
+		n /= 2;
+	return ((n == 1) ? 1 : 0);
 }
 
-int		main(int argc, char **argv)
+#include <stdio.h>
+
+int main()
 {
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	unsigned int	n = 10;
+	printf("%d", is_power_of_2(n));
 }

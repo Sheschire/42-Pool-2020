@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemesle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 16:48:26 by tlemesle          #+#    #+#             */
-/*   Updated: 2020/09/18 10:53:02 by tlemesle         ###   ########.fr       */
+/*   Created: 2020/09/16 17:47:29 by tlemesle          #+#    #+#             */
+/*   Updated: 2020/09/20 09:35:31 by tlemesle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putstr(char *str)
+int		*ft_range(int min, int max)
 {
+	int *tab;
 	int i;
 
 	i = 0;
-	while (str[i])
+	tab = 0;
+	if (min >= max)
+		return (tab);
+	if (!(tab = (int *)(malloc(sizeof(*tab) * (max - min)))))
+		return (0);
+	while (min < max)
 	{
-		write(1, &str[i], 1);
+		tab[i] = min;
 		i++;
+		min++;
 	}
-	write(1, "\n", 1);
-}
-
-int		main(int argc, char **argv)
-{
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	return (tab);
 }

@@ -1,33 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemesle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 16:48:26 by tlemesle          #+#    #+#             */
-/*   Updated: 2020/09/18 10:53:02 by tlemesle         ###   ########.fr       */
+/*   Created: 2020/10/01 11:26:00 by tlemesle          #+#    #+#             */
+/*   Updated: 2020/10/01 11:40:05 by tlemesle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+int		ft_atoi(const char *str)
 {
-	int i;
+	int		nb;
+	int		minus;
 
-	i = 0;
-	while (str[i])
+	minus = 1;	
+	nb = 0;
+	while ((*str >= 9 && *str <= 13) || (*str == 32))
+		str++;
+	if (*str == '+' || *str == '-')
 	{
-		write(1, &str[i], 1);
-		i++;
+		if (*str == '-')
+			minus *= -1;
+		str++;
 	}
-	write(1, "\n", 1);
+	while (*str >= '0' && *str <= '9')
+	{
+		nb = nb * 10 + (*str - '0');
+		str++;
+	}
+	return (nb * minus);
 }
 
-int		main(int argc, char **argv)
+#include <stdio.h>
+
+int main()
 {
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	char str[] = "    	--+124koih";
+	printf("%d\n", ft_atoi(str));
 }

@@ -1,0 +1,53 @@
+void	ft_putchar(char c);
+
+void	ft_printline1(int x,char c1, char c2, char c3, int xcount)
+{
+	ft_putchar(c1);
+
+	while (xcount != x)
+	{
+		ft_putchar(c2);
+		xcount++;
+	}
+
+	ft_putchar(c3);
+	xcount = 1;
+}
+
+int		rush(int x, int y)
+{
+	static int ycount = 0;
+	int xcount;
+	char	c1;
+	char	c2;
+	char	c3;
+	
+	c1 = 'A';
+	c2 = 'B';
+	c3 = 'C';
+//	ycount = 1;
+	xcount = 1;
+
+	if (x == 0 || y == 0)
+		return (0);
+
+	ft_printline1(x,c1, c2, c3, xcount);
+	ft_putchar('\n');
+
+	while (ycount++ != y)
+	{
+		ft_putchar(c2);
+
+		while (xcount != x)
+		{
+			ft_putchar(' ');
+			xcount++;
+		}
+	
+		ft_putchar(c2);
+		ft_putchar('\n');
+	}
+	ft_printline1(x,c1, c2, c3, xcount);
+
+	return (0);
+}

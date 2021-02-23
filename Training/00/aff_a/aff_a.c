@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   aff_a.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemesle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 16:48:26 by tlemesle          #+#    #+#             */
-/*   Updated: 2020/09/18 10:53:02 by tlemesle         ###   ########.fr       */
+/*   Created: 2020/09/24 11:07:52 by tlemesle          #+#    #+#             */
+/*   Updated: 2020/09/24 11:24:38 by tlemesle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putstr(char *str)
+int		main(int argc,char **argv)
 {
-	int i;
-
-	i = 0;
-	while (str[i])
+	if (argc != 2)
+		write(1, "a", 1);
+	else
 	{
-		write(1, &str[i], 1);
-		i++;
+		while (*argv[1])
+		{
+			if (*argv[1] == 'a')
+				write(1, "a", 1);
+			argv[1]++;
+		}
 	}
 	write(1, "\n", 1);
-}
-
-int		main(int argc, char **argv)
-{
-	(void)argc;
-	ft_putstr(argv[0]);
 	return (0);
 }

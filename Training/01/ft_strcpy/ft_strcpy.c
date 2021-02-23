@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemesle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 16:48:26 by tlemesle          #+#    #+#             */
-/*   Updated: 2020/09/18 10:53:02 by tlemesle         ###   ########.fr       */
+/*   Created: 2020/09/24 12:16:04 by tlemesle          #+#    #+#             */
+/*   Updated: 2020/09/24 12:24:48 by tlemesle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putstr(char *str)
+char	*ft_strcpy(char *s1, char *s2)
 {
-	int i;
+	int		i;
 
 	i = 0;
-	while (str[i])
+	while (s2[i])
 	{
-		write(1, &str[i], 1);
+		s1[i] = s2[i];
 		i++;
 	}
-	write(1, "\n", 1);
+	s1[i] = '\0';
+	return (s1);
 }
 
-int		main(int argc, char **argv)
+#include <stdio.h>
+
+int main()
 {
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	char	s1[52]; 
+	char	s2[22] = "nicolasticot";
+	printf("Chaine de depart: %s\nChaine copiee : %s\n", s2, ft_strcpy(s1, s2));
 }

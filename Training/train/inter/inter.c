@@ -1,33 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   inter.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlemesle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/14 16:48:26 by tlemesle          #+#    #+#             */
-/*   Updated: 2020/09/18 10:53:02 by tlemesle         ###   ########.fr       */
+/*   Created: 2020/10/01 11:41:42 by tlemesle          #+#    #+#             */
+/*   Updated: 2020/10/01 11:51:05 by tlemesle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putstr(char *str)
+void	ft_inter(char *s1, char *s2)
 {
-	int i;
+	int		i;
+	int		ascii[256] = {0};
 
 	i = 0;
-	while (str[i])
+	while (s2[i])
 	{
-		write(1, &str[i], 1);
+		if (ascii[(int)s2[i]] == 0)
+			ascii[(int)s2[i]] = 1;
 		i++;
 	}
-	write(1, "\n", 1);
+	i = 0;
+	while (s1[i])
+	{
+		if (ascii[(int)s1[i]] == 1)
+		{
+			write(1, &s1[i], 1);
+			ascii[(int)s1[i]] = 2;
+		}
+		i++;
+	}
 }
 
-int		main(int argc, char **argv)
+int		main(int ac, char **av)
 {
-	(void)argc;
-	ft_putstr(argv[0]);
-	return (0);
+	if (ac == 3)
+		ft_inter(av[1], av[2]);
+	write(1, "\n", 1);
 }
